@@ -116,3 +116,7 @@ dist
 .pnp.*
 
 **/data/
+
+# fake ssl
+*.key 
+*.crt
