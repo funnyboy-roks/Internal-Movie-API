@@ -4,28 +4,37 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="stylesheet" href="https://ez-css.now.sh">
+	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+		integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
 	<link rel="stylesheet" href="./style/style.css">
 	<title>Movie List</title>
 </head>
 
 <body>
+	<div class="background"></div>
 	<div class="content">
 		<div id="search-options">
+			<form class="pure-form">
+				<fieldset>
 
-			Search: <input type="text" name="search" id="search">
+					<label for="search">Search</label>
+					<input class="pure-input-1-3" type="text" name="search" id="search" placeholder="Search">
 
-			Alphabet Section: <select name="alpha" id="alpha">
-				<option value="all">Any</option>
-			</select>
+					<label for="alpha">Alphabet Section</label>
+					<select class="pure-input-1-4" name="alpha" id="alpha">
+						<option value="all">Any</option>
+					</select>
 
-			Genre: <select name="genre" id="genre">
-				<option value="all">Any</option>
-			</select>
+					<label for="genre">Genre</label>
+					<select class="pure-input-1-4" name="genre" id="genre">
+						<option value="all">Any</option>
+					</select>
+				</fieldset>
+			</form>
+
 
 		</div>
-		<div id="movie-list">
-			Loading...
+		<div id="movie-list" class="pure-g">
 		</div>
 	</div>
 

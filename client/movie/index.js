@@ -1,24 +1,35 @@
 const movie = location.hash.replace('#', '');
 const content = document.querySelector('#content');
 
-console.log('test');
-
-const [alpha, title] = movie.split('/');
-
 async function fillData() {
-	const data = await fetch(`/api/title/${movie}`);
-	const json = await data.json();
+	const json = await fetch(`/api/title/${movie}`).then((data) => data.json());
 	console.log(json);
 	content.innerText = JSON.stringify(json, null, 4);
+
+	const {
+		title,
+		description,
+		imdbUrl,
+		rating,
+		contentRating,
+		runtime,
+		genres,
+		releaseDate,
+		image,
+		stars,
+		storyline,
+		taglines,
+	} = json;
+
+	document.querySelector('#report').addEventListener('click', () => {
+		const id = prompt('What is the IMDb ID for this movie?');
+		fetch(`/api/wrong/${movie}/${id.length === 0 ? 'null' : id}`);
+	});
 }
 
-if (movie.match(/.*\/.*/)) {
+if (movie.match(/.+\/.+/)) {
 	fillData();
 } else {
-	console.error('Invalid Movie');
+	location.hash = '';
+	location.pathname = '/';
 }
-
-document.querySelector('#report').addEventListener('click', () => {
-	const id = prompt('What is the IMDb ID for this movie?');
-	fetch(`/api/wrong/${title}/${id.length === 0 ? 'null' : id}`);
-});

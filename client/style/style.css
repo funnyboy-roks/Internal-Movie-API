@@ -1,7 +1,64 @@
+* {
+	box-sizing: border-box !important;
+}
+
+html {
+	min-height: 100vh;
+	overflow-x: hidden;
+    background: #0b0a33
+}
+
+.background {
+	background: linear-gradient(#0000, #010031aa) no-repeat;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 90vh;
+    width: 100vw;
+}
+
 .card {
-    border: 2px solid black;
-    padding: .5em;
-    margin: 1em;
-    cursor: pointer;
-    border-radius: .5em;
+	margin: 0.5em;
+	cursor: pointer;
+	width: 15.5%;
+	min-height: 42vh;
+	color: #fff;
+	background: #070018 no-repeat center content-box;
+	background-size: cover;
+	position: relative;
+}
+
+.info p {
+	display: none;
+}
+
+.card:hover .info p {
+	display: inherit;
+}
+
+.info {
+	padding: 0.5em;
+	background: linear-gradient(#0008, #000f);
+	position: absolute;
+	bottom: 0;
+    width: 100%
+}
+
+.pure-g {
+	letter-spacing: normal !important;
+}
+
+#search-options {
+	margin: 1em 0;
+	width: 100vw;
+}
+
+#search-options form {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+label {
+	color: white;
 }

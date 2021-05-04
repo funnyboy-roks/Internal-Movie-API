@@ -44,6 +44,7 @@ const runPage = async () => {
 	}, 1000);
 	filter();
 
+	// showTitles(allMovies.slice(0, 10));
 	showTitles();
 };
 
@@ -91,31 +92,43 @@ const showTitles = (movies = allMovies) => {
 		movies = allMovies;
 	}
 	movies.forEach((t) => {
-		const elem = document.createElement('div');
-		elem.classList.add('card');
-		elem.setAttribute('title', 'Click to view');
-		elem.addEventListener('click', () => {
+		const backgroundElem = document.createElement('div');
+		backgroundElem.classList.add('pure-u-4-24', 'card');
+		backgroundElem.setAttribute('title', 'Click to view');
+		backgroundElem.style.backgroundImage = `url(${t.image})`;
+		backgroundElem.addEventListener('click', () => {
 			window.location.hash = t.url;
 			window.location.pathname = '/movie/';
 		});
 
+		const elem = document.createElement('div');
+		elem.classList.add('info');
+		
 		const title = document.createElement('h1');
 		title.innerText = t.title;
 		elem.appendChild(title);
 
+		const description = document.createElement('p');
+		description.classList.add('lead');
+		description.innerText = t.description;
+		elem.appendChild(description);
+
 		const genres = document.createElement('p');
+		genres.classList.add('lead');
 		genres.innerText = (t.genres || []).join(', ');
 		elem.appendChild(genres);
 
 		const stars = document.createElement('p');
+		genres.classList.add('lead');
 		stars.innerText = (t.stars || []).join(', ');
 		elem.appendChild(stars);
 
-		const image = document.createElement('img');
-		image.setAttribute('src', t.image);
-		elem.appendChild(image);
+		// const image = document.createElement('img');
+		// image.setAttribute('src', t.image);
+		// elem.appendChild(image);
 
-		elems.movieList.appendChild(elem);
+		backgroundElem.appendChild(elem)
+		elems.movieList.appendChild(backgroundElem);
 	});
 };
 

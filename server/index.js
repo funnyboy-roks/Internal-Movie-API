@@ -17,7 +17,9 @@ https // Use an HTTPS connection with a self-signed cert
 		},
 		app
 	)
-	.listen(port);
+	.listen(port, null, () => {
+		console.log(`Listening at https://localhost:${port}`);
+	});
 
 app.use(
 	helmet.contentSecurityPolicy({
@@ -53,10 +55,10 @@ app.get('/api/genres', (req, res) => {
 	res.json(dataHandler.genres);
 });
 
-app.get('/api/wrong/:name/:id', (req, res) => {
-	const { name, id } = req.params;
+app.get('/api/wrong/:alpha/:name/:id', (req, res) => {
+	const { alpha, name, id } = req.params;
 
-	dataHandler.badMovie(name, id);
+	dataHandler.badMovie(alpha + '\\' + name, id);
 
 	res.json({ message: 'submitted' });
 });
