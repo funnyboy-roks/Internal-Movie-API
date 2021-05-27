@@ -3,6 +3,7 @@ const elems = {
 	alpha: document.querySelector('#alpha'),
 	genre: document.querySelector('#genre'),
 	movieList: document.querySelector('#movie-list'),
+	startNas: document.querySelector('#start-nas'),
 };
 
 let titles;
@@ -36,6 +37,16 @@ const runPage = async () => {
 	elems.alpha.addEventListener('input', filter);
 	elems.genre.addEventListener('input', filter);
 
+	elems.startNas.addEventListener('click', () => {
+		fetch('/api/wakeNAS', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: '{}',
+		});
+	});
+
 	setInterval(() => {
 		if (lastSearchValue != elems.searchBar.value) {
 			lastSearchValue = elems.searchBar.value;
@@ -66,7 +77,7 @@ const filter = () => {
 			.replace(filterRegEx, '-');
 		show = show.filter(
 			(m) =>
-				(m.title || '')
+				(m.title || 'undefined')
 					.replace(filterRegEx, '-') // Make whitespace, commas, underscores, and dashes the same - this also makes "one, two" and "one two" the same
 					.toLowerCase()
 					.includes(filterValue) ||
@@ -103,14 +114,15 @@ const showTitles = (movies = allMovies) => {
 
 		const elem = document.createElement('div');
 		elem.classList.add('info');
-		
+
 		const title = document.createElement('h1');
-		title.innerText = t.title;
+		title.innerText =
+			t.title || t.url.split('/')[1].replace(/[_\s]+/g, ' ');
 		elem.appendChild(title);
 
 		const description = document.createElement('p');
 		description.classList.add('lead');
-		description.innerText = t.description;
+		description.innerText = t.description || t.path;
 		elem.appendChild(description);
 
 		const genres = document.createElement('p');
@@ -127,7 +139,7 @@ const showTitles = (movies = allMovies) => {
 		// image.setAttribute('src', t.image);
 		// elem.appendChild(image);
 
-		backgroundElem.appendChild(elem)
+		backgroundElem.appendChild(elem);
 		elems.movieList.appendChild(backgroundElem);
 	});
 };

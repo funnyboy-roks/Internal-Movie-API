@@ -5,6 +5,8 @@ const helmet = require('helmet');
 const dataHandler = require('./dataHandler');
 const https = require('https');
 const fs = require('fs');
+const wol = require('wol');
+const fetch = require('node-fetch');
 require('dotenv').config();
 
 const app = express();
@@ -63,7 +65,23 @@ app.get('/api/wrong/:alpha/:name/:id', (req, res) => {
 	res.json({ message: 'submitted' });
 });
 
-// const port = process.env.PORT || 5000;
+app.post('/api/wakeNAS', (req, res) => {
+	console.log('Starting NAS...');
+	wol.wake(process.env.NAS_MAC);
+	res.end();
+});
+
+app.post('/api/openMovie', (req, res) => {
+	fetch(`http://${process.env.MOVIE_PC_IP}:${process.env.MOVIE_PC_PORT}/api/openMovie`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(req.body),
+	});
+	res.end();
+});
+
 // app.listen(port, () => {
 // 	console.log(`Listening at http://localhost:${port}`);
 // });

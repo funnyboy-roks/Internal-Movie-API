@@ -1,5 +1,66 @@
-.card {
-	border: 3px solid black;
-	margin: .5em;
-    padding: 1em;
+* {
+	box-sizing: border-box;
+}
+
+#header {
+	background: linear-gradient(45deg, #1dfff4, #00dabd);
+	padding: 2em;
+}
+
+#header .middle {
+	display: flex;
+}
+
+#header .right {
+	text-align: center;
+}
+
+.center-out {
+	display: flex;
+	justify-content: center;
+	max-height: 100%;
+	/* border: 5px solid black; */
+}
+
+.rating {
+	display: inline;
+	font-weight: normal;
+}
+
+.content-rating {
+	margin-left: 4rem;
+}
+
+.small {
+	font-size: 2rem !important;
+	font-weight: lighter;
+	color: #333;
+}
+
+.center-in {
+	margin: 0;
+	padding: 0;
+	/* border: 5px solid blue; */
+}
+
+.rating {
+	font-size: 4rem;
+}
+
+.cover {
+	width: 100%;
+	height: auto;
+}
+
+.subtitle {
+	font-weight: normal;
+}
+
+.label {
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+#main .right {
+	padding-left: 2em;
 }

@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+        integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
 </head>
+
 <body>
-    <button id="report" class="pure-button pure-button-primary">Report</button>
     <div id="content">
+        <div class="pure-g" id="header">
+            <div class="pure-u-11-24 left" id="left"></div>
+            <div class="pure-u-7-24 middle" id="middle"></div>
+            <div class="pure-u-1-4 right" id="right">
+                <div>
+                    <button id="report" class="pure-button pure-button-primary">Report</button>
+                    <button id="start-movie" class="pure-button pure-button-primary">Start Movie</button>
+                </div>
+            </div>
+
+        </div>
+        <div id="main" class="pure-g">
+            <div class="pure-u-1-4 left" id="left"></div>
+            <div class="pure-u-3-4 right" id="right"></div>
+
+        </div>
     </div>
-    
+    <div id="json" hidden></div>
+
     <script src="index.js"></script>
 </body>
+
 </html>

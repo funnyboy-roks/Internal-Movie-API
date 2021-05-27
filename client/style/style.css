@@ -5,16 +5,17 @@
 html {
 	min-height: 100vh;
 	overflow-x: hidden;
-    background: #0b0a33
+	background: #0b0a33;
+	color: white;
 }
 
 .background {
 	background: linear-gradient(#0000, #010031aa) no-repeat;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    height: 90vh;
-    width: 100vw;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 90vh;
+	width: 100vw;
 }
 
 .card {
@@ -41,7 +42,7 @@ html {
 	background: linear-gradient(#0008, #000f);
 	position: absolute;
 	bottom: 0;
-    width: 100%
+	width: 100%;
 }
 
 .pure-g {
